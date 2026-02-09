@@ -22,7 +22,7 @@ removeBtn.addEventListener("click",async()=>{
         body: formData,
     });
 
-    if (!response.ok) {
+    if (!response) {
     console.error("Server returned an error:", response.status);
     const text = await response.text();
     console.log(text);
