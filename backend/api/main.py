@@ -1,6 +1,6 @@
 from fastapi import FastAPI,UploadFile,File
 from fastapi.responses import StreamingResponse
-from rembg import remove
+
 from PIL import Image
 import io
 from fastapi.middleware.cors import CORSMiddleware
@@ -31,6 +31,7 @@ def health():
 
 @app.post("/bg-remover")
 async def remove_bg(file: UploadFile = File(...)):
+    from rembg import remove
 
     image_bytes = await file.read()
     
