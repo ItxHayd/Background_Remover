@@ -1,38 +1,22 @@
-const removeBtn = document.querySelector("#removeBtn")
-const DownloadLink = document.querySelector("#downloadLink")
-const imgInput = document.querySelector("#imgInput")
-const resultImg = document.querySelector("#resultImg")
-
-
-removeBtn.addEventListener("click",async()=>{
-    const file = imgInput.files[0];
-    if(!file){
-        console.log("file not found!!");
-        return;
-    }
-    
-    
-
-
+const file = imgInput.files[0];
+const img = new Image();
+img.src = URL.createObjectURL(file);
+img.onload = async () => {
+    const canvas = document.createElement('canvas');
+    const MAX = 1024; // max width/height
+    let w = img.width;
+    let h = img.height;
+    if (w > h && w > MAX) { h = (h/w)*MAX; w = MAX; }
+    else if (h > MAX) { w = (w/h)*MAX; h = MAX; }
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
     const formData = new FormData();
-    formData.append("file",file);
+    formData.append('file', blob, 'resized.png');
 
-    const response =  await fetch("https://corporate-bette-backgroundremover-c8890279.koyeb.app/bg-remover", {
-        method: "POST",
-        body: formData,
-    });
-
-    if (!response) {
-    console.error("Server returned an error:", response.status);
-    const text = await response.text();
-    console.log(text);
-    return;
-    }
-
-    const blob = await response.blob();
-    const imageUrl = URL.createObjectURL(blob);
-
-    resultImg.src = imageUrl;
-    DownloadLink.href = imageUrl;
-    DownloadLink.style.display = "inline";
-});
+    const response = await fetch('https://corporate-bette-backgroundremover-c8890279.koyeb.app/bg-remover', { method:'POST', body: formData });
+    const resultBlob = await response.blob();
+    resultImg.src = URL.createObjectURL(resultBlob);
+};
