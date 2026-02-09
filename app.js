@@ -17,7 +17,7 @@ removeBtn.addEventListener("click",async()=>{
     const formData = new FormData();
     formData.append("file",file);
 
-    const response =  await fetch("http://localhost:8000/bg-remover", {
+    const response =  await fetch("https://corporate-bette-backgroundremover-c8890279.koyeb.app/bg-remover", {
         method: "POST",
         body: formData,
     });
