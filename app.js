@@ -22,10 +22,17 @@ removeBtn.addEventListener("click",async()=>{
         body: formData,
     });
 
+    if (!response.ok) {
+    console.error("Server returned an error:", response.status);
+    const text = await response.text();
+    console.log(text);
+    return;
+    }
+
     const blob = await response.blob();
     const imageUrl = URL.createObjectURL(blob);
 
     resultImg.src = imageUrl;
-    downloadLink.href = imageUrl;
-    downloadLink.style.display = "inline";
+    DownloadLink.href = imageUrl;
+    DownloadLink.style.display = "inline";
 });
