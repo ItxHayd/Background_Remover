@@ -11,6 +11,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://itxhayd.github.io",
+        "*"
     ],
     allow_credentials=True,
     allow_methods=["*"],
