@@ -1,0 +1,26 @@
+# Node / Frontend
+node_modules/
+dist/
+build/
+.env
+.DS_Store
+
+# Tailwind / CSS build
+*.css.map
+
+# VS Code
+.vscode/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if you use FastAPI backend)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.idea/

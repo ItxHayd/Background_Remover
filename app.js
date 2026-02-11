@@ -2,7 +2,18 @@ const removeBtn = document.querySelector("#removeBtn")
 const DownloadLink = document.querySelector("#downloadLink")
 const imgInput = document.querySelector("#imgInput")
 const resultImg = document.querySelector("#resultImg")
+const preview = document.querySelector("#preview")
+const logo = document.querySelector("#logo")
+const logotext = document.querySelector("#logotext")
 
+imgInput.addEventListener("change",()=>{
+    const file2 = imgInput.files[0];
+    if (file2) {
+    preview.src = URL.createObjectURL(file2);
+    logo.classList.add("hidden");
+    logotext.classList.add("hidden");
+    };
+})
 
 removeBtn.addEventListener("click",async()=>{
     const file = imgInput.files[0];
