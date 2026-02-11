@@ -15,6 +15,6 @@ Tech Stack
 
 Backend: Python, FastAPI, rembg, Pillow
 
-Frontend: HTML, CSS, JavaScript
+Frontend: HTML, CSS, JavaScript, Tailwind
 
 Deployment: GitHub Pages (frontend), Koyeb (backend)
