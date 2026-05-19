@@ -5,7 +5,7 @@ A simple and fast web-based background remover tool built using a modern serverl
 ---
 
 ## 🚀 Live Demo
-👉 https://itxhayd.github.io (replace with your deployed link)
+👉 [https://itxhayd.github.io](https://itxhayd.github.io/Background_Remover/) 
 
 ---
 
