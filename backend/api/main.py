@@ -1,47 +1,47 @@
-from fastapi import FastAPI,UploadFile,File
-from fastapi.responses import StreamingResponse
+# from fastapi import FastAPI,UploadFile,File
+# from fastapi.responses import StreamingResponse
 
-from PIL import Image
-import io
-from fastapi.middleware.cors import CORSMiddleware
+# from PIL import Image
+# import io
+# from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+# app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "https://itxhayd.github.io",
-        "*"
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-@app.get("/")
-def root():
-    return {"status": "ok"}
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=[
+#         "https://itxhayd.github.io",
+#         "*"
+#     ],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 
+# @app.get("/")
+# def root():
+#     return {"status": "ok"}
 
-@app.get("/health")
-def health():
-    return {"status":"ok"}
 
-@app.post("/bg-remover")
-async def remove_bg(file: UploadFile = File(...)):
-    from rembg import remove
 
-    image_bytes = await file.read()
+# @app.get("/health")
+# def health():
+#     return {"status":"ok"}
+
+# @app.post("/bg-remover")
+# async def remove_bg(file: UploadFile = File(...)):
+#     from rembg import remove
+
+#     image_bytes = await file.read()
     
-    image = Image.open(io.BytesIO(image_bytes)) #opening file
+#     image = Image.open(io.BytesIO(image_bytes)) #opening file
 
-    output = remove(image) #background remove
+#     output = remove(image) #background remove
 
-    buffer = io.BytesIO() # like creating a  new file but only in ram
+#     buffer = io.BytesIO() # like creating a  new file but only in ram
 
-    output.save(buffer,format="PNG")
+#     output.save(buffer,format="PNG")
 
-    buffer.seek(0)
-    return StreamingResponse(buffer, media_type="image/png")
+#     buffer.seek(0)
+#     return StreamingResponse(buffer, media_type="image/png")
