@@ -8,6 +8,11 @@ A simple and fast web-based background remover tool built using a modern serverl
 👉 [https://itxhayd.github.io](https://itxhayd.github.io/Background_Remover/) 
 
 ---
+## ScreenShot
+
+<img width="1366" height="972" alt="bg-rem" src="https://github.com/user-attachments/assets/c567b302-0b21-4f0c-8131-e71b09eb64f1" />
+
+---
 
 ## ✨ Features
 
